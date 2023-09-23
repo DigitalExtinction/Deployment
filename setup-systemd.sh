@@ -11,7 +11,7 @@ UNIT_PATH="/etc/systemd/system/de-lobby.service"
 if id "${USERNAME}" &>/dev/null; then
     echo "User ${USERNAME} already exists. Skipping user creation."
 else
-    useradd -r -s /usr/sbin/nologin -M "${USERNAME}"
+    sudo useradd -r -s /usr/sbin/nologin -M "${USERNAME}"
     echo "User ${USERNAME} created."
 fi
 
