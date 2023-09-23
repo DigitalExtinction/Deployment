@@ -1,0 +1,22 @@
+[Unit]
+Description=DE Lobby
+After=network.target
+
+[Service]
+Type=simple
+Environment="RUST_LOG=warn,de_lobby=debug"
+ExecStart=/bin/sh -c 'DE_DB_URL=$(mktemp /tmp/mydb.XXXXXX.sqlite) DE_JWT_SECRET=$(head -c 20 /dev/urandom | base64) /usr/local/bin/de-lobby'
+Restart=on-failure
+
+# Security measures
+User=de-lobby
+Group=de-lobby
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+RestrictAddressFamilies=AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target
