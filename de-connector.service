@@ -1,0 +1,22 @@
+[Unit]
+Description=DE Connector
+After=network.target
+
+[Service]
+Type=simple
+Environment="RUST_LOG=info"
+ExecStart=/usr/local/bin/de-connector
+Restart=on-failure
+
+# Security measures
+User=de-connector
+Group=de-connector
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+RestrictAddressFamilies=AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

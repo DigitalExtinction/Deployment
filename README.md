@@ -11,4 +11,5 @@ The following installation steps work on most Linux distributions.
 1. `cd de-deployment`
 1. Install DE Lobby and DE Connector: `./install.sh`
 1. Setup Systemd: `./setup-systemd.sh`
-1. Start enable the Systemd service: `systemctl enable --now de-lobby`
+1. Enable DE Lobby service: `systemctl enable --now de-lobby`
+1. Enable DE Connector service: `systemctl enable --now de-connector`
